@@ -2,11 +2,11 @@ from app import app
 from app.models.trial import Trial
 from flask import Blueprint, render_template
 
-trial = Blueprint('trial', __name__, url_prefix='/trials')
+trial = Blueprint('trial', __name__)
 
 @trial.route('/')
-def index():
-    trials = Trial.query.all()
+def index(page=1):
+    trials = Trial.query.order_by(Trial.case_common_name)
     return render_template('trial/index.html', trials=trials)
 
 @trial.route('/<trial_id>')

@@ -1,8 +1,32 @@
 {% extends "layouts/base.html" %}
-{% block title %}Trial : {{ t.case_common_name }} : {%endblock %}
+{% block title %}Trial of {{ t.accused.first_name }} {{ t.accused.last_name }}, {{ t.case_start_date }} : {%endblock %}
 
 {% block content %}
-  <ul class='list-unstyled'>
-    <li>{{ t.accused_ref }}</li>
-  </ul>
+<ul class='list-unstyled'>
+  <h2>Case details</h2>
+  <li>ID: {{ t.id  }}</li>
+  <li>Accused: <a href="/accused/{{ t.accused.id }}">{{ t.accused.first_name }}  {{ t.accused.last_name }}</a></li>
+  <li>Age during trial: {{  t.age_at_case if t.age_at_case != None else 'Unknown' }}</li>
+  <li>Start date: {{ t.case_start_date }}</li>
+  <li>End date: {{ t.case_date }}</li>
+</ul>
+
+  {% if t.case_chars() %}
+    <h2>Characteristics</h2>
+    <ul class='list-unstyled'>
+      {% for c in t.case_chars() %}
+        <li>{{ c }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if t.case_note_text() %}
+    <h2>Notes</h2>
+    <ul class='list-unstyled'>
+      {% for c in t.case_note_text() %}
+        <li>{{ c }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
 {% endblock %}

@@ -2,10 +2,13 @@
 {% block title %}Accused : {%endblock %}
 
 {% block content %}
+  <div class='container'>
+  </div>
   <table class='table' >
     <tr>
       <th>Name</th>
       <th>County</th>
+      <th>Trial</th>
     </tr>
     {% for a in ap %}
       <tr>
@@ -15,7 +18,16 @@
           <td>
             <p>{{a.res_county}}</p>
           </td>
+          <td>
+            {% for at in a.trials %}
+            <p><a href='/trials/{{at.id}}'>{{at}}</a></p>
+            {% endfor %}
+          </td>
       <tr>
     {% endfor %}
   </table>
+{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" src="{{ url_for('static', filename='public/css/nv.d3.min.js') }}" type="text/css" />
 {% endblock %}

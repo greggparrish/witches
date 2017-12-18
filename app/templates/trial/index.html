@@ -2,7 +2,7 @@
 {% block title %}Trial : {%endblock %}
 
 {% block content %}
-  <table class='table' >
+  <table class='table sortable' >
     <tr>
       <th>Old accused Ref</th>
       <th>Accused Ref</th>
@@ -14,7 +14,7 @@
             <a href="{{ t.id  }}">{{ t.accused_ref }}</a>
           </td>
           <td>
-            <a href="/accused/{{ t.accused_id }}">{{ t.accused_id }}</a>
+            <a href="/accused/{{ t.accused_id }}">{{ t.case_common_name }}</a>
           </td>
           <td>
             {{ t.case_date }}
@@ -22,4 +22,7 @@
       <tr>
     {% endfor %}
   </table>
+{% endblock %}
+{% block extra_js %}
+    <script type="text/javascript" src="{{ url_for('static', filename='public/js/sorttable.js') }}"></script>
 {% endblock %}

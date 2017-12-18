@@ -1,12 +1,12 @@
 from app import app
 from app.models.accused import Accused
 from flask import Blueprint, render_template
+from nvd3 import pieChart
 
-accused = Blueprint('accused', __name__, url_prefix='/accused')
+accused = Blueprint('accused', __name__)
 
 @accused.route('/')
-def index():
-    ap = Accused.query.all()
+    ap = Accused.query.order_by(Accused.last_name).limit(20)
     return render_template('accused/index.html', ap=ap)
 
 @accused.route('/<accused_id>')

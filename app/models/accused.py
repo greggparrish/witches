@@ -10,6 +10,7 @@ class Accused(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     old_id = db.Column(db.String(128))
+    trials = db.relationship('Trial', backref='accused', lazy='dynamic')
     first_name = db.Column(db.String(128))
     last_name = db.Column(db.String(128))
     m_first_name = db.Column(db.String(128))

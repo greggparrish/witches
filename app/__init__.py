@@ -23,13 +23,13 @@ db.init_app(app)
 migrate.init_app(app, db)
 login.init_app(app)
 
-""" VIEWS """
-from app.views.static import static
-from app.views.accused import accused
-from app.views.trial import trial
-app.register_blueprint(accused)
-app.register_blueprint(static)
-app.register_blueprint(trial)
+""" BLUEPRINTS """
+from app.views.static import static as static_bp
+app.register_blueprint(static_bp)
+from app.views.accused import accused as accused_bp
+app.register_blueprint(accused_bp, url_prefix='/accused')
+from app.views.trial import trial as trial_bp
+app.register_blueprint(trial_bp, url_prefix='/trials')
 
 """ ASSETS """
 assets = Environment(app)
