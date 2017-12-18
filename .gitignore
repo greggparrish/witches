@@ -25,7 +25,7 @@ migrations/
 node_modules/
 parts/
 sdist/
-static/
+static/public/
 var/
 uzbl.sh
 

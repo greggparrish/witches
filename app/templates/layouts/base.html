@@ -4,18 +4,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block title %}{% endblock %}
+    <title>{% block title %}{% endblock %}Scottish Witches</title>
     <link href="{{ url_for('static', filename='public/css/bootstrap.min.css') }}" rel="stylesheet">
 		{% assets "css_all" %}
         <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
 		{% endassets %}
   </head>
   <body>
+      {% include "shared/navbar.html" %}
+      {% include "shared/header.html" %}
     <div class="container">
       {% block content %}{% endblock %}
     </div>
+      {% include "shared/footer.html" %}
 		{% assets "js_all" %}
 				<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+				<script type="text/javascript" src="{{ url_for('static', filename='public/js/jquery-3.2.1.min.js') }}"></script>
+				<script type="text/javascript" src="{{ url_for('static', filename='public/js/bootstrap.min.js') }}"></script>
 		{% endassets %}
   </body>
 </html>

@@ -1,0 +1,25 @@
+{% extends "layouts/base.html" %}
+{% block title %}Trial : {%endblock %}
+
+{% block content %}
+  <table class='table' >
+    <tr>
+      <th>Old accused Ref</th>
+      <th>Accused Ref</th>
+      <th>Case date</th>
+    </tr>
+    {% for t in trials %}
+      <tr>
+          <td>
+            <a href="{{ t.id  }}">{{ t.accused_ref }}</a>
+          </td>
+          <td>
+            <a href="/accused/{{ t.accused_id }}">{{ t.accused_id }}</a>
+          </td>
+          <td>
+            {{ t.case_date }}
+          </td>
+      <tr>
+    {% endfor %}
+  </table>
+{% endblock %}

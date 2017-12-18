@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+{% block title %}Accused : {%endblock %}
+
+{% block content %}
+  <table class='table' >
+    <tr>
+      <th>Name</th>
+      <th>County</th>
+    </tr>
+    {% for a in ap %}
+      <tr>
+          <td>
+            <p><a href='{{a.id}}'>{{a.first_name}} {{a.last_name}}</a></p>
+          </td>
+          <td>
+            <p>{{a.res_county}}</p>
+          </td>
+      <tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+{% block title %}Accused : {{ ap.first_name }} {{ ap.last_name }} : {%endblock %}
+
+{% block content %}
+  <ul class='list-unstyled'>
+    <li>Old id: {{ ap.old_id  }}</li>
+    <li>Name: {{ ap.first_name }} {{ ap.last_name }}</li>
+    <li>Married name: {{ ap.m_first_name  }} {{ ap.m_last_name }}</li>
+    <li>Patronymic: {{ ap.patronymic }}</li>
+    <li>Destitle: {{ ap.destitle  }}</li>
+    <li>Sex: {{ 'Female' if ap.sex == False else 'Male' }}</li>
+    <li>Age: {{  ap.age if ap.age != None else 'Unknown' }}</li>
+    <li>Age_estcareer: {{ ap.age_estcareer }}</li>
+    <li>Age_estchild: {{ ap.age_estchild }}</li>
+    <li>Res_settlement: {{ ap.res_settlement }}</li>
+    <li>Res_parish: {{ ap.res_parish }}</li>
+    <li>Res_presbytery: {{ ap.res_presbytery }}</li>
+    <li>Res_burgh: {{ ap.res_burgh }}</li>
+    <li>Res_ngr_letters: {{ ap.res_ngr_letters }}</li>
+    <li>Res_ngr_easting: {{ ap.res_ngr_easting }}</li>
+    <li>Res_ngr_northing: {{ ap.res_ngr_northing }}</li>
+    <li>Ethnicity: {{ ap.ethnicity }}</li>
+    <li>Marital status: {{ ap.marital_status }}</li>
+    <li>Socioeconomic status: {{ ap.socioeconomic_status }}</li>
+    <li>Occupation: {{ ap.occupation }}</li>
+    <li>Notes: {{ ap.notes }}</li>
+  </ul>
+{% endblock %}
