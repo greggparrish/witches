@@ -22,5 +22,11 @@
     <li>Socioeconomic status: {{ ap.socioeconomic_status }}</li>
     <li>Occupation: {{ ap.occupation }}</li>
     <li>Notes: {{ ap.notes }}</li>
+    {% if ap.family[0] %}
+      <h2>Family</h2>
+      {% for af in ap.family %}
+      <li>{{ af.relationship }}: {{af.first_name}} {{af.last_name}} ({{ af.family_data()|join(',') }})</li>
+      {% endfor %}
+    {% endif %}
   </ul>
 {% endblock %}
