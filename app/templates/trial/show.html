@@ -1,0 +1,16 @@
+{% extends "layouts/base.html" %}
+{% block title %}Trial of {{ t.accusation.accused.first_name}} {{ t.accusation.accused.last_name }} : {%endblock %}
+
+{% block content %}
+<ul class='list-unstyled'>
+  <h2>Trial details</h2>
+  <li>Accused name: {{ t.accusation.accused.first_name }} {{ t.accusation.accused.last_name }}</li>
+  <li>Part of accusation: <a href='/accusation/{{ t.accusation.id }}'>{{ t.accusation.case_ref }}</a></li>
+  <li>Arrest date: {{ t.arrest_date }}</li>
+  <li>Pre-trial notes: {{ t.pretrial_notes}}</li>
+  <li>Trial notes: {{ t.trial_notes }}</li>
+  <li>Post-trial notes: {{ t.post_trial_notes }}</li>
+  <li>Execution method: {{ t.execution_method }}</li>
+</ul>
+
+{% endblock %}

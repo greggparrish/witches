@@ -7,6 +7,7 @@ class Accusation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     accused_ref = db.Column(db.String(128))
     accused_id = db.Column(db.Integer, db.ForeignKey(Accused.id))
+    trials = db.relationship('Trial', backref='accusation', lazy='dynamic')
     admit_lesser_charge = db.Column(db.Boolean)
     age_at_case = db.Column(db.Integer)
     aggravating_disease = db.Column(db.Boolean)

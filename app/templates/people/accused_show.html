@@ -7,7 +7,7 @@
     <li>Married name: {{ ap.m_first_name  }} {{ ap.m_last_name }}</li>
     <li>Old id: {{ ap.old_id  }}</li>
     {% for at in ap.accusations %}
-    <li>Accusation: <a href='/accusation/{{at.id}}'>{{ at.case_ref }} : {{at.case_date}}</a></li>
+      <li>Accusation: <a href='/accusation/{{at.id}}'>{{ at.case_ref }} : {{at.case_date}}</a></li>
     {% endfor %}
     <li>Destitle: {{ ap.destitle  }}</li>
     <li>Sex: {{ 'Female' if ap.sex == False else 'Male' }}</li>

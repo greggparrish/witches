@@ -6,6 +6,9 @@
   <h2>Accusation details</h2>
   <li>ID: {{ a.id  }}</li>
   <li>Accused: <a href="/people/{{ a.accused.id }}">{{ a.accused.first_name }}  {{ a.accused.last_name }}</a></li>
+  {% for t in a.trials %}
+    <li>Trial: <a href='/trial/{{t.id}}'>{{ t.trial_ref }}</a></li>
+  {% endfor %}
   <li>Age during trial: {{  a.age_at_case if a.age_at_case != None else 'Unknown' }}</li>
   <li>Start date: {{ a.case_start_date }}</li>
   <li>End date: {{ a.case_date }}</li>

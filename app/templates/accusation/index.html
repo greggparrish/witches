@@ -8,20 +8,20 @@
       <th>Accused Ref</th>
       <th>Case date</th>
     </tr>
-    {% for t in trials %}
+    {% for a in aa %}
       <tr>
           <td>
-            <a href="{{ t.id  }}">{{ t.accused_ref }}</a>
+            <a href="{{ a.id  }}">{{ a.accused_ref }}</a>
           </td>
           <td>
-            {% if t.accused.id %}
-              <a href="/accused/{{ t.accused_id }}">{{ t.case_common_name }}</a>
+            {% if a.accused.id %}
+              <a href="/people/{{ a.accused_id }}">{{ a.case_common_name }}</a>
             {% else %}
-              {{ t.case_common_name }}
+              {{ a.case_common_name }}
             {% endif %}
           </td>
           <td>
-            {{ t.case_date }}
+            {{ a.case_date }}
           </td>
       <tr>
     {% endfor %}

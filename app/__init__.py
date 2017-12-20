@@ -30,6 +30,8 @@ from app.views.people import people as people_bp
 app.register_blueprint(people_bp, url_prefix='/people')
 from app.views.accusation import accusation as accusation_bp
 app.register_blueprint(accusation_bp, url_prefix='/accusation')
+from app.views.trial import trial as trial_bp
+app.register_blueprint(trial_bp, url_prefix='/trial')
 
 """ ASSETS """
 assets = Environment(app)
