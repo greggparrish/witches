@@ -1,9 +1,9 @@
 import re
 from app import db
-from app.models.accused import Accused
+from app.models.people import Accused
 
 
-class Trial(db.Model):
+class Accusation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     accused_ref = db.Column(db.String(128))
     accused_id = db.Column(db.Integer, db.ForeignKey(Accused.id))
@@ -14,7 +14,6 @@ class Trial(db.Model):
     animal_illness = db.Column(db.Boolean)
     case_common_name = db.Column(db.String(128))
     case_date = db.Column(db.String(128))
-    case_id = db.Column(db.Integer)
     case_notes = db.Column(db.Text)
     case_ref = db.Column(db.String(128))
     case_start_date = db.Column(db.String(128))
@@ -111,7 +110,7 @@ class Trial(db.Model):
     white_magic_s = db.Column(db.Boolean)
     witches_meeting = db.Column(db.Boolean)
 
-    def case_chars(self):
+    def accusation_chars(self):
         '''
         Return list of case characteristics (bools marked True)
         Filter out unhelpful bools
@@ -119,7 +118,7 @@ class Trial(db.Model):
         blacklist = ['not_enough_info_p', 'not_enough_info_s', 'named_individual', 'implicated_by_another_p', 'implicated_by_another_s', 'suspects_text']
         return [re.sub('_',' ',key).capitalize() for key, val in self.__dict__.items() if val==True and key not in blacklist]
 
-    def case_note_text(self):
+    def accusation_note_text(self):
         '''
         Return list of case notes (col type tex and not Null)
         '''
@@ -127,4 +126,4 @@ class Trial(db.Model):
         return ["{}: {}".format(re.sub('_',' ',key).capitalize(),val) for key, val in self.__dict__.items() if key in whitelist and val != None]
 
     def __repr__(self):
-        return 'Case: {}, {}'.format(self.case_id, self.case_date)
+        return 'Accusation: {}, {}'.format(self.case_ref, self.case_date)

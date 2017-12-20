@@ -8,7 +8,7 @@
     <tr>
       <th>Name</th>
       <th>County</th>
-      <th>Trial</th>
+      <th>Accusation of Witchcraft</th>
     </tr>
     {% for a in ap %}
       <tr>
@@ -19,8 +19,8 @@
             <p>{{a.res_county}}</p>
           </td>
           <td>
-            {% for at in a.trials %}
-            <p><a href='/trials/{{at.id}}'>{{at}}</a></p>
+            {% for at in a.accusations %}
+            <p><a href='/accusation/{{at.id}}'>{{ at.case_date }} : {{ at.case_ref }}</a></p>
             {% endfor %}
           </td>
       <tr>

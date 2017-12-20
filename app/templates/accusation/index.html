@@ -14,7 +14,11 @@
             <a href="{{ t.id  }}">{{ t.accused_ref }}</a>
           </td>
           <td>
-            <a href="/accused/{{ t.accused_id }}">{{ t.case_common_name }}</a>
+            {% if t.accused.id %}
+              <a href="/accused/{{ t.accused_id }}">{{ t.case_common_name }}</a>
+            {% else %}
+              {{ t.case_common_name }}
+            {% endif %}
           </td>
           <td>
             {{ t.case_date }}

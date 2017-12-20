@@ -2,14 +2,13 @@
 {% block title %}Accused : {{ ap.first_name }} {{ ap.last_name }} : {%endblock %}
 
 {% block content %}
+  <h1>Accused: {{ ap.first_name }} {{ ap.last_name }}</h1>
   <ul class='list-unstyled'>
-    <li>Old id: {{ ap.old_id  }}</li>
-    {% for at in ap.trials %}
-      <li><a href='/trials/{{at.id}}'>{{at}}</a></li>
-    {% endfor %}
-    <li>Name: {{ ap.first_name }} {{ ap.last_name }}</li>
     <li>Married name: {{ ap.m_first_name  }} {{ ap.m_last_name }}</li>
-    <li>Patronymic: {{ ap.patronymic }}</li>
+    <li>Old id: {{ ap.old_id  }}</li>
+    {% for at in ap.accusations %}
+    <li>Accusation: <a href='/accusation/{{at.id}}'>{{ at.case_ref }} : {{at.case_date}}</a></li>
+    {% endfor %}
     <li>Destitle: {{ ap.destitle  }}</li>
     <li>Sex: {{ 'Female' if ap.sex == False else 'Male' }}</li>
     <li>Age: {{  ap.age if ap.age != None else 'Unknown' }}</li>
@@ -25,7 +24,11 @@
     {% if ap.family[0] %}
       <h2>Family</h2>
       {% for af in ap.family %}
-      <li>{{ af.relationship }}: {{af.first_name}} {{af.last_name}} ({{ af.family_data()|join(',') }})</li>
+      <li>{{ af.relationship }}: {{af.first_name}} {{af.last_name}} 
+        {% if af.family_data() %}
+          ({{ af.family_data()|join(',') }})
+          {% endif %}
+      </li>
       {% endfor %}
     {% endif %}
   </ul>

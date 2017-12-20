@@ -26,10 +26,10 @@ login.init_app(app)
 """ BLUEPRINTS """
 from app.views.static import static as static_bp
 app.register_blueprint(static_bp)
-from app.views.accused import accused as accused_bp
-app.register_blueprint(accused_bp, url_prefix='/accused')
-from app.views.trial import trial as trial_bp
-app.register_blueprint(trial_bp, url_prefix='/trials')
+from app.views.people import people as people_bp
+app.register_blueprint(people_bp, url_prefix='/people')
+from app.views.accusation import accusation as accusation_bp
+app.register_blueprint(accusation_bp, url_prefix='/accusation')
 
 """ ASSETS """
 assets = Environment(app)
